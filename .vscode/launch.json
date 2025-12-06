@@ -6,6 +6,20 @@
     "configurations": [
         {
             "type": "java",
+            "name": "string",
+            "request": "launch",
+            "mainClass": "string",
+            "projectName": "PROJECT_a8ac202a"
+        },
+        {
+            "type": "java",
+            "name": "AssociativityOfOperatorQue",
+            "request": "launch",
+            "mainClass": "AssociativityOfOperatorQue",
+            "projectName": "PROJECT_a8ac202a"
+        },
+        {
+            "type": "java",
             "name": "associativity_of_operator",
             "request": "launch",
             "mainClass": "associativity_of_operator",
