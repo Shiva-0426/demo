@@ -1,0 +1,761 @@
+
+
+
+    
+    /* Background Styling */
+body {
+    background: linear-gradient(135deg, #02182B, #0A2A47);
+    color: #FFFFFF;
+    font-family: 'Poppins', sans-serif;
+    animation: fadeIn 1s ease-in-out;
+}
+
+/* Card Styling */
+.card {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid #c6d6df;
+    color: #FFFFFF;
+    border-radius: 15px;
+    backdrop-filter: blur(10px);
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    width: auto;
+    height: auto;
+}
+
+
+
+/* Title Styling */
+.text-primary {
+    color: #E0E0E0  !important;
+    padding: 0.5rem 0;
+    font-weight: 600;
+    text-shadow: 
+        0 1px 3px rgba(0, 0, 0, 0.3), 
+        0 0 10px rgba(100, 150, 255, 0.1); 
+    letter-spacing: 0.03em;
+    font-family: 'Lora', italic; 
+    transition: all 0.3s ease; 
+}
+
+/* Optional hover effect */
+.text-primary:hover {
+    color: #FFFFFF !important;
+    text-shadow: 
+        0 1px 5px rgba(0, 0, 0, 0.4),
+        0 0 15px rgba(100, 150, 255, 0.2);
+}
+
+
+/* Form Controls */
+.form-control, .form-select {
+    background: rgba(255, 255, 255, 0.2);
+    border: 1px solid #B0BEC5;
+    color: #FFFFFF;
+    transition: all 0.3s ease;
+}
+.form-control:focus, .form-select:focus {
+    background: rgba(255, 255, 255, 0.3);
+    border-color: #A8D5FF;
+    color: white;
+    box-shadow: 0 0 10px #A8D5FF;
+}
+
+.table input:focus {
+    outline: none;
+    border-color: #7A42F4;
+    box-shadow: 0 0 5px rgba(122, 66, 244, 0.5);
+}
+
+.option-box {
+    border: 2px solid #B0BEC5;
+    border-radius: 8px;
+    padding: 10px;
+    margin-bottom: 8px;
+    background-color:rgba(255, 255, 255, 0.05); ;
+    display: flex;
+    align-items: center;
+}
+.form-check-label {
+    margin-left: 10px;
+    flex-grow: 1;
+}
+
+.form-select option {
+    color: white !important;
+    background: #09203F !important;
+}
+
+/* Table Styling */
+.table {
+    width: 100;
+    border-collapse: collapse;
+    margin-top: 20px;
+    color: #C2E0F5;
+}
+
+th, td {
+      padding: 10px;
+      text-align: left;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .table-dark th {
+      background: linear-gradient(135deg,  #02182B, #0A2A47);
+      color: #ffffff;
+      text-shadow: 1px 1px 3px rgba(0,0,0,0.4);
+    }
+
+   
+
+.table-dark {
+    background: #7A42F4;
+    color: black;
+}
+.table tbody tr:hover {
+    background: rgba(255, 255, 255, 0.1);
+    transition: 0.3s;
+}
+.table input {
+    color: black !important;
+    background-color: white;
+    border: 1px solid #B0BEC5;
+    padding: 5px;
+}
+
+
+
+
+
+/* Custom Button */
+.btn-primary {
+    background: linear-gradient(135deg, #02182B, #0A2A47);
+    border: 1px solid #c6d6df;
+    color: white;
+    font-weight: bold;
+    padding: 10px 20px;
+    transition: 0.10s;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 25px;
+}
+.btn-primary:hover {
+    background: linear-gradient(135deg, #0A2A47, #02182B);
+    border: 5px solid #0A2A47;
+    filter: brightness(1.3);
+}
+
+/* Print Button Styling */
+.btn-print {
+    display: none;
+    opacity: 0;
+    transition: all 0.3s ease;
+}
+.btn-print.show {
+    display: inline-block;
+    opacity: 1;
+}
+
+/* Animation styles */
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+@keyframes shake {
+    0% { transform: translateX(0); }
+    25% { transform: translateX(-5px); }
+    50% { transform: translateX(5px); }
+    75% { transform: translateX(-5px); }
+    100% { transform: translateX(0); }
+}
+
+#studentForm button[type="submit"], button[type="print"] {
+    min-width: 200px;
+    padding: 12px 30px;
+    font-size: 1.1em;
+    font-weight: bold;
+    border: 1px solid #c6d6df;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    height: auto;
+    box-sizing: border-box;
+}
+#studentForm button[type="submit"]:hover, .btn-print:hover {
+    background: linear-gradient(135deg, #0A2A47, #02182B);
+    border: 5px solid #0A2A47;
+    filter: brightness(1.3);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+#studentForm button[type="submit"]:active,
+#studentForm button[type="submit"]:focus,
+.btn-print:active,
+.btn-print:focus {
+    outline: none;
+    box-shadow: 0 0 0 0.25rem rgba(10, 42, 71, 0.5);
+}
+
+.submit-spinner {
+    width: 20px;
+    height: 20px;
+    border: 3px solid #c6d6df;
+    border-radius: 50%;
+    border-top-color: white;
+    animation: spin 1s ease-in-out infinite;
+}
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+/* State classes */
+.submit-success {
+    background-color: #198754 !important;
+    border-color: #198754 !important;
+}
+.submit-error {
+    background-color: #dc3545 !important;
+    border-color: #dc3545 !important;
+}
+.submit-loading {
+    background-color: #6c757d !important;
+    border-color: #6c757d !important;
+}
+.spinner-border {
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 8px;
+}
+
+/* Fade-in Animation */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Signature Boxes */
+.signature-box {
+    display: none;
+    margin-top: 50px;
+}
+
+/* Print Styles */
+
+.water-analysis-section {
+        page-break-before: always; /* Forces water analysis to start on new page */
+    }
+
+    .additional-info-section {
+        page-break-before: always; /* Forces additional info to start on new page */
+    }
+
+    /* Content Grouping */
+    .print-section {
+        page-break-inside: avoid;
+        break-inside: avoid;
+        margin-bottom: 12pt;
+    }
+
+
+
+    /* Content Grouping */
+    .print-section {
+        page-break-inside: avoid;
+        break-inside: avoid;
+        margin-bottom: 15pt;
+    }
+
+@media print {
+    body {
+        background:  linear-gradient(135deg, #02182B, #0A2A47)  !important;
+        color: white !important;
+    }
+    .card {
+        background: rgba(255, 255, 255, 0.1)!important;
+        color: white !important;
+        box-shadow: none;
+        border: 1px solid #c6d6df;
+        padding: 20px;
+        width: auto;
+        height: auto;
+    }
+    .btn-primary, .btn-print {
+        display: none !important;
+    }
+
+    .table {
+            border: 1px solid #B0BEC5 !important;
+            color: #C2E0F5 !important;
+        }
+
+        .table-dark {
+            background: #7A42F4 !important;
+            color: black !important;
+        }
+
+        .btn-primary, .btn-print {
+            display: none !important;
+        }
+
+    .signature-box {
+        display: flex !important;
+        justify-content: space-between;
+        margin-top: 50px;
+    }
+    .signature-line {
+        border-top: 1px solid #000;
+        width: 200px;
+        text-align: center;
+        padding-top: 30px;
+    }
+    * {
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+    }
+}
+
+    
+@media (max-width: 768px) {
+        .card {
+            padding: 15px;
+        }
+        .form-control, .form-select {
+            font-size: 14px;
+        }
+        .btn-primary {
+            font-size: 14px;
+            padding: 8px 16px;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .card {
+            padding: 10px;
+        }
+        .text-primary {
+            font-size: 20px;
+        }
+        .form-control, .form-select {
+            font-size: 12px;
+            padding: 8px;
+        }
+        .btn-primary {
+            font-size: 12px;
+            padding: 6px 12px;
+        }
+    }
+    
+
+    /* summarypage Style */
+
+    /* Add this to your CSS */
+#summaryPage h1 {
+    font-family: 'Lora', serif;
+    font-weight: 600;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3), 
+                 0 0 10px rgba(100, 150, 255, 0.1);
+    letter-spacing: 0.03em;
+    transition: all 0.3s ease;
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+#summaryPage h1:hover {
+    color: #FFFFFF !important;
+    text-shadow: 0 1px 5px rgba(0, 0, 0, 0.4),
+                0 0 15px rgba(100, 150, 255, 0.2);
+}
+
+/* Validation styles */
+.is-invalid {
+    border-color: #dc3545 !important;
+    background-color: rgba(220, 53, 69, 0.1) !important;
+}
+.invalid-feedback {
+    color: #ff6b6b;
+    font-size: 0.875em;
+    margin-top: 0.25rem;
+}
+.was-validated .form-control:invalid,
+.was-validated .form-select:invalid,
+.was-validated .form-check-input:invalid {
+    border-color: #dc3545;
+}
+.was-validated .form-control:valid,
+.was-validated .form-select:valid,
+.was-validated .form-check-input:valid {
+    border-color: #28a745;
+}
+.required-field::after {
+    content: " *";
+    color: #dc3545;
+}
+
+/* Thank You Page Styles */
+
+/* Thank You Page Container */
+.thank-you-full .twinkle-star {
+    position: absolute;
+    width: 2px;
+    height: 2px;
+    background: white;
+    border-radius: 50%;
+    animation: starTwinkle 3s infinite ease-in-out;
+    opacity: 0.5;
+    z-index: 1;
+}
+
+/* Particles should also be contained */
+.thank-you-full .particle {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background: cyan;
+    border-radius: 50%;
+    opacity: 0.1;
+    animation: twinkle 3s infinite ease-in-out;
+    z-index: 1;
+}
+
+.thank-you-bg {
+    margin: 0;
+    padding: 0;
+    background: radial-gradient(circle at center, #0f2027, #203a43, #2c5364);
+    font-family: 'Great Vibes', cursive;
+    overflow: hidden;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    position: relative;
+   
+}
+.thank-you-full {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+
+.background-lab {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.75;
+    filter: blur(3px);
+    z-index: 0;
+}
+.character-img {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    max-height: 85%;
+    z-index: 1;
+    pointer-events: none;
+}
+.thank-you-card {
+    position: relative ;
+    background: rgba(255, 255, 255, 0.07);
+    backdrop-filter: blur(16px) saturate(180%);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    border-radius: 20px;
+    padding: 50px 40px;
+    max-width: 500px;
+    text-align: center;
+    width: 90%;
+    z-index: 2;
+    box-shadow: 0 8px 32px rgba(0, 255, 255, 0.25);
+    margin: auto;
+    margin-top: 40px;
+    /* margin-bottom: 20%; */
+    animation: pulseBorder 6s ease-in-out infinite;
+      transition: all 0.3s ease-in-out;
+}
+
+.thank-you-card:hover {
+    box-shadow: 0 0 45px rgba(0, 255, 255, 0.6);
+    transform: rotateY(10deg) scale(1.05);
+}
+@keyframes pulseBorder {
+    0% {
+        box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+        border-color: rgba(255, 255, 255, 0.3);
+    }
+    50% {
+        box-shadow: 0 0 35px rgba(0, 255, 255, 0.6);
+        border-color: rgba(0, 255, 255, 0.6);
+    }
+    100% {
+        box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+        border-color: rgba(255, 255, 255, 0.3);
+    }
+}
+.thank-you-card h1 {
+    font-family: 'Great Vibes', cursive;
+    font-size: 3.5em;
+    margin-bottom: 12px;
+    color: #00ffff;
+
+}
+.thank-you-card p {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2em;
+    color: #d0f0ff;
+    margin-bottom: 8px;
+}
+
+/* Button Container */
+.button-container {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 30px;
+    width: 100%;
+    flex-wrap: wrap;
+}
+
+
+.btn-modern {
+      background: linear-gradient(135deg,#02182B, #0A2A47);
+      color: white;
+      padding: 12px 24px;
+      font-size: 1em;
+      border: none;
+      border-radius: 50px;
+      box-shadow: 0 6px 15px rgba(0, 174, 255, 0.3);
+      transition: all 0.3s ease;
+      margin: auto;
+      flex: 1; 
+      min-width: 150px; 
+      cursor: pointer;
+    }
+
+    .btn-modern:hover {
+      box-shadow: 0 10px 25px rgba(0, 174, 255, 0.5);
+      transform: translateY(-2px);
+    }
+
+    .twinkle-star {
+      position: absolute;
+      width: 2px;
+      height: 2px;
+      background: white;
+      border-radius: 50%;
+      animation: starTwinkle 3s infinite ease-in-out;
+      opacity: 0.5;
+      z-index: 1;
+    }
+
+    @keyframes starTwinkle {
+      0%, 100% { opacity: 0.2; transform: scale(1); }
+      50% { opacity: 1; transform: scale(1.5); }
+    }
+
+/* .emoji {
+    font-size: 2.2em;
+    margin: 20px 0;
+} */
+.sparkle {
+    position: absolute;
+    width: 3px;
+    height: 3px;
+    background: white;
+    border-radius: 50%;
+    animation: sparkleMove 10s linear infinite;
+    opacity: 0.8;
+    z-index: 0;
+}
+@keyframes sparkleMove {
+    from {
+        transform: translateY(0) translateX(0);
+        opacity: 0.8;
+    }
+    to {
+        transform: translateY(-100vh) translateX(50vw);
+        opacity: 0;
+    }
+}
+.twinkle-star {
+      position: absolute;
+      width: 2px;
+      height: 2px;
+      background: white;
+      border-radius: 50%;
+      animation: starTwinkle 3s infinite ease-in-out;
+      opacity: 0.5;
+      z-index: 1;
+    }
+
+    @keyframes starTwinkle {
+      0%, 100% { opacity: 0.2; transform: scale(1); }
+      50% { opacity: 1; transform: scale(1.5); }
+    }
+
+.chem-symbol {
+    position: absolute;
+    font-size: 1.2em;
+    color: rgba(255,255,255,0.3);
+    animation: float 14s ease-in-out infinite;
+    z-index: 0;
+    user-select: none;
+}
+@keyframes float {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-30px) rotate(15deg); }
+}
+.bubbles {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+}
+.bubble {
+    width: 10px;
+    height: 10px;
+    background: cyan;
+    border-radius: 50% 30% 50% 30%;
+    animation: bubbleUp 3s ease-in infinite;
+    margin: 0 2px;
+}
+@keyframes bubbleUp {
+    0% { transform: translateY(100%); opacity: 0; }
+    30% { opacity: 1; }
+    100% { transform: translateY(-100%); opacity: 0; }
+}
+body.thank-you-active .card h1.text-primary {
+    display: none;
+}
+.circuit-line {
+      position: absolute;
+      height: 2px;
+      width: 100px;
+      background: linear-gradient(to right, cyan, transparent);
+      animation: moveLine 8s linear infinite;
+      opacity: 0.3;
+      z-index: 1;
+    }
+
+    @keyframes moveLine {
+      0% { transform: translateX(-150px); }
+      100% { transform: translateX(100vw); }
+    }
+
+    .particle {
+      position: absolute;
+      width: 4px;
+      height: 4px;
+      background: cyan;
+      border-radius: 50%;
+      opacity: 0.1;
+      animation: twinkle 3s infinite ease-in-out;
+    }
+
+    @keyframes twinkle {
+      0%, 100% { opacity: 0.1; }
+      50% { opacity: 0.6; }
+    }
+
+/* Responsive */
+  /* @media (max-width: 768px) {
+    .card {
+        padding: 15px;
+        width: 100%;
+    }
+    .form-control, .form-select,
+    .btn-primary {
+        font-size: 14px;
+        padding: 8px 14px;
+    }
+    .thank-you-card {
+        padding: 25px;
+        margin: 20px;
+    }
+    .thank-you-card h1 {
+        font-size: 1.8em;
+    }
+    .thank-you-card p {
+        font-size: 1em;
+    }
+    .character-img {
+        max-height: 60%;
+        right: -20px;
+    }
+}
+@media (max-width: 480px) {
+    .thank-you-card .button-container {
+        flex-direction: column;
+    }
+    .btn-modern {
+        width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    .card {
+        padding: 10px;
+        width: 100%;
+    }
+    .text-primary {
+        font-size: 18px;
+        text-align: center;
+    }
+    .form-control, .form-select {
+        font-size: 12px;
+        padding: 8px;
+    }
+    .btn-primary {
+        font-size: 12px;
+        padding: 6px 10px;
+        width: 100%;
+    }
+    #studentForm button[type="submit"],
+    button[type="print"] {
+        width: 100%;
+        font-size: 14px;
+    }
+    .thank-you-card {
+        padding: 20px;
+        margin: 10px;
+    }
+    .thank-you-card h1 {
+        font-size: 1.5em;
+    }
+    .thank-you-card p {
+        font-size: 0.95em;
+    }
+    .character-img {
+        max-height: 50%;
+        right: -40px;
+    }
+    .signature-box {
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+    }
+    .signature-line {
+        width: 100%;
+    }
+    .option-box {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .emoji {
+        font-size: 1.8em;
+    }
+} */
+

@@ -1,0 +1,295 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Top AI Tools</title>
+  <meta name="description" content="Quick access to top AI tools. Links open in a new tab.">
+  <style>
+    :root {
+      --bg-1: #07060a;
+      --bg-2: #0d0710;
+      --accent: #8a46ff;
+      --accent2: #5b2aff;
+      --glass: rgba(255,255,255,0.03);
+      --glass2: rgba(255,255,255,0.05);
+      --muted: rgba(255,255,255,0.55);
+      --card-radius: 18px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Inter, system-ui, Segoe UI, Roboto, Arial;
+      background:
+        radial-gradient(1200px 600px at 20% 10%, rgba(138,70,255,0.18), transparent 60%),
+        radial-gradient(900px 500px at 85% 40%, rgba(91,42,255,0.12), transparent 60%),
+        linear-gradient(180deg, var(--bg-1), var(--bg-2));
+      color: #fff;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 32px;
+    }
+
+    .wrap {
+      max-width: 900px;
+      width: 100%;
+    }
+
+    header {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+
+    .logo {
+      width: 64px;
+      height: 64px;
+      border-radius: 14px;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-weight: 800;
+      font-size: 22px;
+      box-shadow: 0 10px 40px rgba(138,70,255,0.35);
+    }
+
+    h1 {
+      margin: 0;
+      font-size: 26px;
+      font-weight: 700;
+      background: linear-gradient(180deg, #fff, #e6d9ff);
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+
+    p.lead {
+      margin: 4px 0 0;
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 18px;
+    }
+
+    .card {
+      background: linear-gradient(180deg, var(--glass), rgba(255,255,255,0.015));
+      border: 1px solid rgba(255,255,255,0.06);
+      padding: 20px;
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      transition: transform .25s ease, box-shadow .25s ease, border-color .25s;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.45);
+      backdrop-filter: blur(6px);
+    }
+
+    .card:hover {
+      transform: translateY(-6px);
+      border-color: rgba(138,70,255,0.4);
+      box-shadow: 0 18px 50px rgba(138,70,255,0.25);
+    }
+
+    .favicon {
+      width: 52px;
+      height: 52px;
+      border-radius: 12px;
+      background: rgba(255,255,255,0.06);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      color: #d8ccff;
+      font-size: 18px;
+      box-shadow: inset 0 0 18px rgba(138,70,255,0.3);
+    }
+
+    .meta h3 {
+      margin: 0;
+      font-size: 17px;
+    }
+
+    .meta p {
+      margin: 6px 0 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .visit {
+      border: 1px solid rgba(255,255,255,0.06);
+      padding: 10px 16px;
+      color: var(--muted);
+      border-radius: 12px;
+      cursor: pointer;
+      background: transparent;
+      font-weight: 600;
+    }
+
+    .visit:hover {
+      border-color: rgba(138,70,255,0.6);
+      color: #fff;
+    }
+
+    footer {
+      margin-top: 20px;
+      color: var(--muted);
+      font-size: 14px;
+      text-align: center;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+    <header>
+      <div class="logo">AI</div>
+      <div>
+        <h1>Top AI Tools</h1>
+        <p class="lead">Quick access to popular AI sites. All links open in a new tab.</p>
+      </div>
+    </header>
+
+    <main>
+      <section class="grid">
+
+        <!-- ChatGPT -->
+        <article class="card">
+          <div class="favicon">🤖</div>
+          <div class="meta">
+            <h3>ChatGPT</h3>
+            <p>OpenAI’s most advanced conversational AI.</p>
+          </div>
+          <a class="visit" href="https://chat.openai.com" target="_blank">Open</a>
+        </article>
+
+        <!-- Gemini -->
+        <article class="card">
+          <div class="favicon">🔷</div>
+          <div class="meta">
+            <h3>Google Gemini</h3>
+            <p>Google’s multimodal AI assistant.</p>
+          </div>
+          <a class="visit" href="https://gemini.google.com" target="_blank">Open</a>
+        </article>
+
+        <!-- DeepSeek -->
+        <article class="card">
+          <div class="favicon">⚡</div>
+          <div class="meta">
+            <h3>DeepSeek</h3>
+            <p>Fast, powerful open-source AI model.</p>
+          </div>
+          <a class="visit" href="https://chat.deepseek.com" target="_blank">Open</a>
+        </article>
+
+        <!-- Claude -->
+        <article class="card">
+          <div class="favicon">🧠</div>
+          <div class="meta">
+            <h3>Claude</h3>
+            <p>Anthropic’s safe and creative AI.</p>
+          </div>
+          <a class="visit" href="https://claude.ai" target="_blank">Open</a>
+        </article>
+
+        <!-- Perplexity -->
+        <article class="card">
+          <div class="favicon">🔍</div>
+          <div class="meta">
+            <h3>Perplexity AI</h3>
+            <p>AI search engine with real-time web answers.</p>
+          </div>
+          <a class="visit" href="https://www.perplexity.ai" target="_blank">Open</a>
+        </article>
+
+        <!-- Copilot -->
+        <article class="card">
+          <div class="favicon">💼</div>
+          <div class="meta">
+            <h3>Microsoft Copilot</h3>
+            <p>AI assistant for tasks, Office, coding.</p>
+          </div>
+          <a class="visit" href="https://copilot.microsoft.com" target="_blank">Open</a>
+        </article>
+
+        <!-- HuggingFace -->
+        <article class="card">
+          <div class="favicon">🤗</div>
+          <div class="meta">
+            <h3>HuggingFace</h3>
+            <p>Open AI models, datasets & tools.</p>
+          </div>
+          <a class="visit" href="https://huggingface.co" target="_blank">Open</a>
+        </article>
+
+        <!-- Leonardo AI -->
+        <article class="card">
+          <div class="favicon">🎨</div>
+          <div class="meta">
+            <h3>Leonardo AI</h3>
+            <p>AI art generator for high-quality images.</p>
+          </div>
+          <a class="visit" href="https://leonardo.ai" target="_blank">Open</a>
+        </article>
+
+        <!-- Midjourney -->
+        <article class="card">
+          <div class="favicon">🌈</div>
+          <div class="meta">
+            <h3>Midjourney</h3>
+            <p>Advanced AI image generation (Discord).</p>
+          </div>
+          <a class="visit" href="https://www.midjourney.com" target="_blank">Open</a>
+        </article>
+
+        <!-- Runway -->
+        <article class="card">
+          <div class="favicon">🎬</div>
+          <div class="meta">
+            <h3>Runway Gen-2</h3>
+            <p>AI video generation and editing.</p>
+          </div>
+          <a class="visit" href="https://runwayml.com" target="_blank">Open</a>
+        </article>
+
+        <!-- GitHub Copilot -->
+        <article class="card">
+          <div class="favicon">👨‍💻</div>
+          <div class="meta">
+            <h3>GitHub Copilot</h3>
+            <p>AI coding assistant for developers.</p>
+          </div>
+          <a class="visit" href="https://github.com/features/copilot" target="_blank">Open</a>
+        </article>
+
+        <!-- Learngraph -->
+        <article class="card">
+          <div class="favicon">📘</div>
+          <div class="meta">
+            <h3>Learngraph AI</h3>
+            <p>AI-powered learning and study tools.</p>
+          </div>
+          <a class="visit" href="https://learngraph.ai" target="_blank">Open</a>
+        </article>
+
+      </section>
+
+      <footer>
+        Press <kbd>Ctrl</kbd> + <kbd>D</kbd> to bookmark this page.
+      </footer>
+    </main>
+  </div>
+</body>
+</html>

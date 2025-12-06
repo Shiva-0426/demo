@@ -1,0 +1,63 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "java",
+            "name": "associativity_of_operator",
+            "request": "launch",
+            "mainClass": "associativity_of_operator",
+            "projectName": "PROJECT_a8ac202a"
+        },
+        {
+            "type": "java",
+            "name": "operators",
+            "request": "launch",
+            "mainClass": "operators",
+            "projectName": "PROJECT_a8ac202a"
+        },
+        {
+            "type": "java",
+            "name": "que",
+            "request": "launch",
+            "mainClass": "que",
+            "projectName": "PROJECT_a8ac202a"
+        },
+        {
+            "type": "java",
+            "name": "getting_input_from_user",
+            "request": "launch",
+            "mainClass": "getting_input_from_user",
+            "projectName": "PROJECT_a8ac202a"
+        },
+        {
+            "type": "java",
+            "name": "literal",
+            "request": "launch",
+            "mainClass": "literal",
+            "projectName": "PROJECT_a8ac202a"
+        },
+        {
+            "type": "java",
+            "name": "varible",
+            "request": "launch",
+            "mainClass": "varible",
+            "projectName": "PROJECT_a8ac202a"
+        },
+        {
+            "type": "java",
+            "name": "hello",
+            "request": "launch",
+            "mainClass": "hello",
+            "projectName": "PROJECT_a8ac202a"
+        },
+        {
+            "type": "chrome",
+            "request": "launch",
+            "name": "Open 1.html",
+            "file": "c:\\Users\\shiva\\OneDrive\\Desktop\\PROJECT\\WEB-PAGE\\propose\\1.html"
+        }
+    ]
+}

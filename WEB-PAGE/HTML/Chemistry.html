@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teacher Evaluation Components</title>
+    <!-- Bootstrap & Font Awesome -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@1,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="Chemistery.css">
+   
+</head>
+
+
+
+<!--------------------HTML-START---------------------->
+
+<body>
+    
+    <div class="container mt-4">
+        <div  id="mainHeading" class="card shadow-lg p-4">
+            <h1 id="mainHeading" class="text-center text-primary">
+                <i class="fa-solid fa-user-graduate"></i> Teacher Evaluation Components</h1>
+           
+            <form id="studentForm" method="post"  enctype="multipart/form-data">
+               
+                <!-- Student Name --> 
+                <div class="mb-3">
+                    <label class="form-label"><i class="fa-solid fa-user"></i> Student Name</label>
+                    <input type="text" id="Name" name="Name" class="form-control" placeholder="Enter Student Name" required>
+                    <div class="invalid-feedback">Please enter your name</div>
+                </div>
+                 
+
+                <!-- Email -->
+                <div class="mb-3">
+                    <label class="form-label"><i class="fa-solid fa-envelope"></i> Email</label>
+                    <input type="email" id="Email" name="Email" class="form-control" placeholder="Enter Email" required>
+                    <div class="invalid-feedback">Please enter a valid email</div>
+                </div>
+                
+
+                <!-- Roll No -->
+                <div class="mb-3">
+                    <label class="form-label"><i class="fa-solid fa-id-badge"></i> Roll No</label>
+                    <input type="number" id="RollNo" name="RollNo" class="form-control" placeholder="Enter Roll No" required>
+                    <div class="invalid-feedback">Please enter your roll number</div>
+                </div>
+                
+
+                <!-- Class Selection -->
+                <div class="mb-3">
+                    <label class="form-label"><i class="fa-solid fa-school"></i> Class</label>
+                    <select class="form-select" id="Class" name="Class" required>
+                        <option value="" selected disabled>Select Class</option>
+                        <option value="1R">1R</option>
+                        <option value="1S">1S</option>
+                        <option value="1N">1N</option>
+                        <option value="1U1">1U1</option>
+                        <option value="1U2">1U2</option>
+                        <option value="1M">1M</option>
+                    </select>
+                    <div class="invalid-feedback">Please select your class</div>
+                </div>
+                
+                
+                <!-- Course outcome -->
+                <div class="mb-3">
+                    <label class="form-label"><i class="fa-solid fa-book"></i> Course Outcomes</label>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="outcome1" name="CourseOutcomes" value=" CO1:  Analyze impurities present in the water and suggest the methodology for its removal." >
+                        <label class="form-check-label" for="outcome1"> <strong>CO1:</strong>  Analyze impurities present in the water and suggest the methodology for its removal.</label>
+                    </div> 
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="outcome2" name="CourseOutcomes" value=" CO2:  Understand the properties, applications, and advancements of nanomaterials, and corrosion in engineering and technology. ">
+                        <label class="form-check-label" for="outcome2"> <strong>CO2:</strong>  Understand the properties, applications, and advancements of nanomaterials, and corrosion in engineering and technology. </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="outcome3" name="CourseOutcomes" value=" CO3:  Provide comprehensive understanding of the principles, practices, and applications of green Computing and chemistry. ">
+                        <label class="form-check-label" for="outcome3"> <strong>CO3:</strong>  Provide comprehensive understanding of the principles, practices, and applications of green Computing and chemistry. </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="outcome4" name="CourseOutcomes" value=" CO4:  Apply the knowledge about energy science, fuel properties and foundational understanding of energy storage systems for fostering sustainable development contributions.">
+                        <label class="form-check-label" for="outcome4"> <strong>CO4:</strong>  Apply the knowledge about energy science, fuel properties and foundational understanding of energy storage systems for fostering sustainable development contributions. </label>
+                    </div>
+                     <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="outcome5" name="CourseOutcomes" value=" CO5:  Understand and apply energy storage technologies and lubricants for improved system efficiency and reliability">
+                        <label class="form-check-label" for="outcome5"> <strong>CO5:</strong>  Understand and apply energy storage technologies and lubricants for improved system efficiency and reliability</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="outcome6" name="CourseOutcomes" value=" CO6:  Identify key environmental challenges and their technological implications and develop strategies for using biochemical and bioinformatics tools to create sustainable technological solution">
+                        <label class="form-check-label" for="outcome6"> <strong>CO6:</strong>  Identify key environmental challenges and their technological implications and develop strategies for using biochemical and bioinformatics tools to create sustainable technological solution.</label>
+                    </div>
+                    <div class="invalid-feedback" id="outcomeError" style="display:none;">Please select at least one course outcome</div>
+                </div>
+                
+
+                <!--Location-->
+                <h5><i class="fa-solid fa-location-dot"></i> Location</h5>
+                <table class="table table-bordered text-center">
+                    <thead class="table-dark">
+                        <tr>
+                            <th>Sample</th>
+                            <th>Location</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Sample 1</td>
+                            <td><input type="text" class="form-control" id="LocationSample1" name="LocationSample1"  placeholder="Enter Location Of Sample "   required></td>
+                        </tr>
+                        <tr>
+                            <td>Sample 2</td>
+                            <td><input type="text" class="form-control" id="LocationSample2" name="LocationSample2" placeholder="Enter Location Of Sample "  required></td>
+                        </tr>
+                        <tr>
+                            <td>Sample 3</td>
+                            <td><input type="text" class="form-control" id="LocationSample3" name="LocationSample3" placeholder="Enter Location Of Sample "  required></td>
+                        </tr>
+                    </tbody>
+                </table>      
+                
+                
+                <!--Image-->
+                <div class="mb-3">
+                    <label class="form-label">
+                        <i class="fa-solid fa-id-card"></i> Upload an image taken during the practical task.
+                    </label>
+                    <input type="file" class="form-control" accept="image/*" onchange="previewImage(event)" id="fileInput" name="Image" required>
+                    <div class="invalid-feedback">Please upload an image</div>
+                    
+                    <!-- Image Preview with Fixed Size -->
+                    <img id="imagePreview" style="max-width: 350px; max-height: 350px; display: none; margin-top: 10px; object-fit: contain;">
+                </div>
+                
+
+                <!--Date-->
+                <div class="mb-3">
+                    <label class="form-label">
+                        <i class="fa-solid fa-calendar"></i> Date
+                    </label>
+                    <div class="input-group">
+                        <span class="input-group-text">
+                            <i class="fa-solid fa-calendar" id="Date"></i>
+                        </span>
+                        <input type="date" class="form-control" id="dateInput" name="Date" required>
+                        <div class="invalid-feedback">Please select a date</div>
+                    </div>
+                </div>    
+                
+
+                <!-- Water Analysis Table -->
+                <h6><i class="fa-solid fa-flask"></i> Water Analysis (Observation)</h6>
+                <div class="table-container">
+                    <table class="table table-bordered text-center">
+                        <thead class="table-dark">
+                            <tr>
+                                <th>Sample</th>
+                                <th>Temporary Hardness</th>
+                                <th>Permanent Hardness</th>
+                                <th>Total Hardness</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr> 
+                                <td>Sample 1</td>
+                                <td><input type="text" class="form-control" id="TemporaryHardness1" name="TemporaryHardness1" placeholder= "Enter Temporary Hardness"  required></td>
+                                <td><input type="text" class="form-control" id="PermanentHardness1" name="PermanentHardness1" placeholder="Enter Permanent Hardness" required></td>
+                                <td><input type="text" class="form-control" id="TotalHardness1" name="TotalHardness1" placeholder="Enter Total Hardness" required></td>
+                            </tr>
+                            <tr>
+                                <td>Sample 2</td> 
+                                <td><input type="text" class="form-control" id="TemporaryHardness2" name="TemporaryHardness2" placeholder= "Enter Temporary Hardness" required></td>
+                                <td><input type="text" class="form-control" id="PermanentHardness2" name="PermanentHardness2" placeholder="Enter Permanent Hardness" required></td>
+                                <td><input type="text" class="form-control" id="TotalHardness2" name="TotalHardness2" placeholder="Enter Total Hardness" required></td>
+                            </tr>
+                            <tr>
+                                <td>Sample 3</td>
+                                <td><input type="text" class="form-control" id="TemporaryHardness3" name="TemporaryHardness3" placeholder= "Enter Temporary Hardness" required></td>
+                                <td><input type="text" class="form-control" id="PermanentHardness3" name="PermanentHardness3" placeholder="Enter Permanent Hardness" required></td>
+                                <td><input type="text" class="form-control" id="TotalHardness3" name="TotalHardness3" placeholder="Enter Total Hardness" required></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+
+                <!-- Alkalinity Analysis -->
+                <h6><i class="fa-solid fa-tint"></i> Alkalinity Analysis</h6>
+                <table class="table table-bordered text-center">
+                    <thead class="table-dark">
+                        <tr>
+                            <th>Sample</th>
+                            <th> Alkalinity Due to Hydroxide </th>
+                            <th> Alkalinity Due to Carbonates </th>
+                            <th> Alkalinity Due to Bicarbonates </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Sample 1</td>
+                            <td><input type="text" class="form-control" id="Hydroxide1" name="Hydroxide1" placeholder="Enter Alkalinity Due to Hydroxide"  required></td>
+                            <td><input type="text" class="form-control" id="Carbonates1" name="Carbonates1" placeholder="Alkalinity Due to Carbonates" required></td>
+                            <td><input type="text" class="form-control" id="Bicarbonates1" name="Bicarbonates1" placeholder="Alkalinity Due to Bicarbonates" required></td>
+                        </tr>
+                        <tr>
+                            <td>Sample 2</td>
+                            <td><input type="text" class="form-control" id="Hydroxide2" name="Hydroxide2" placeholder="Enter Alkalinity Due to Hydroxide" required></td>
+                            <td><input type="text" class="form-control" id="Carbonates2" name="Carbonates2" placeholder="Alkalinity Due to Carbonates" required></td>
+                            <td><input type="text" class="form-control" id="Bicarbonates2" name="Bicarbonates2" placeholder="Alkalinity Due to Bicarbonates" required></td>
+                        </tr>
+                        <tr>
+                            <td>Sample 3</td>
+                            <td><input type="text" class="form-control" id="Hydroxide3" name="Hydroxide3" placeholder="Enter Alkalinity Due to Hydroxide" required></td>
+                            <td><input type="text" class="form-control" id="Carbonates3" name="Carbonates3" placeholder="Alkalinity Due to Carbonates" required></td>
+                            <td><input type="text" class="form-control" id="Bicarbonates3" name="Bicarbonates3" placeholder="Alkalinity Due to Bicarbonates" required></td>
+                        </tr>
+                    </tbody>
+                </table>
+                
+
+                <!--Conclusion-->
+                <div class="mb-3">
+                    <label class="form-label">
+                        <i class="fa-solid fa-file-circle-check"></i> Conclusion</label>
+                    <textarea id="Conclusion" class="form-control" name="Conclusion" rows="2" placeholder="Enter Conclusion" required></textarea>
+                    <div class="invalid-feedback">Please enter your conclusion</div>
+                </div>
+                
+                
+                <!-- Save Button -->
+                <div class="text-center">
+                    <button type="button" class="btn btn-primary" id="previewBtn" onclick="showSummary()">
+                        <i class="fa-solid fa-save"></i> Save
+                    </button>
+                </div>
+            </form>
+        </div>
+
+        <!---------------------- Summary-Page-------------------- -->
+        <div id="summaryPage" class="card shadow-lg p-4 mt-4" style="display: none;">
+            <div class="summary-content">
+
+                <h1 class="text-center text-primary mb-4">
+                    <i class="fa-solid fa-user-graduate"></i> Teacher Evaluation Components
+                </h1> 
+
+                <!-- Student Information -->
+                <div class="mb-4">
+                    <div class="print-section">
+                    <h4><i class="fa-solid fa-user-graduate"></i> Student Details</h4>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <p><strong>Name:</strong> <span id="summaryName"></span></p>
+                            <p><strong>Email:</strong> <span id="summaryEmail"></span></p>
+                        </div>
+                        <div class="col-md-6">
+                            <p><strong>Roll No:</strong> <span id="summaryRollNo"></span></p>
+                            <p><strong>Class:</strong> <span id="summaryClass"></span></p>
+                        </div>
+                    </div>
+                </div>
+            </div>    
+                <!-- Course Outcomes -->
+                <div class="summary-section card p-4 mb-4">
+                    <div class="print-section">
+                    <h4 class="mb-3"><i class="fa-solid fa-book"></i> Selected Course Outcomes</h4>
+                    <ol id="selectedCourseOutcomes" class="list-group">
+                        <!-- Selected outcomes will be dynamically inserted here -->
+                    </ol>
+                </div>
+                </div>
+            </div>    
+                <!-- Location Data -->
+                <div class="mb-4">
+                    <div class="print-section">
+                    <h4><i class="fa-solid fa-location-dot"></i> Sample Locations</h4>
+                    <table class="table table-bordered">
+                        <thead class="table-dark">
+                            <tr>
+                                <th>Sample</th>
+                                <th>Location</th>
+                            </tr>
+                        </thead>
+                        <tbody id="summaryLocations"></tbody>
+                    </table>
+                </div>
+            </div>    
+                <!-- Water Analysis -->
+                <div class="mb-4">
+                    <div class="water-analysis-section print-section">
+                    <h4><i class="fa-solid fa-flask"></i> Water Analysis</h4>
+                    <table class="table table-bordered">
+                        <thead class="table-dark">
+                            <tr>
+                                <th>Sample</th>
+                                <th>Temporary Hardness</th>
+                                <th>Permanent Hardness</th>
+                                <th>Total Hardness</th>
+                            </tr>
+                        </thead>
+                        <tbody id="summaryWaterAnalysis"></tbody>
+                    </table>
+                </div>
+             </div>   
+                <!-- Alkalinity Analysis -->
+                <div class="mb-4">
+                    <div class="print-section" style="margin-top: 20pt;">
+                    <h4><i class="fa-solid fa-tint"></i> Alkalinity Analysis</h4>
+                    <table class="table table-bordered">
+                        <thead class="table-dark">
+                            <tr>
+                                <th>Sample</th>
+                                <th>Hydroxide</th>
+                                <th>Carbonates</th>
+                                <th>Bicarbonates</th>
+                            </tr>
+                        </thead>
+                        <tbody id="summaryAlkalinity"></tbody>
+                    </table>
+                </div>
+            </div>    
+                <!-- Image Preview in Summary -->
+                <div class="mb-4" id="summaryImageContainer" style="display: none;">
+                    <h4><i class="fa-solid fa-image"></i> Practical Image</h4>
+                    <img id="summaryImage" style="max-width: 350px; max-height: 350px; object-fit: contain;">
+                </div>
+                
+                <!-- Date and Conclusion -->
+                <div class="mb-4">
+                    <div class="additional-info-section print-section">
+                    <h4><i class="fa-solid fa-calendar-check"></i> Additional Information</h4>
+                    <p><strong>Date:</strong> <span id="summaryDate"></span></p>
+                    <p><strong>Conclusion:</strong> <span id="summaryConclusion"></span></p>
+                </div>
+            
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="container mt-5">
+                <div class="d-flex justify-content-center flex-wrap gap-5">
+                    <button type="button" class="btn btn-primary no-print" id="backToForm">
+                        <i class="fa-solid fa-arrow-left"></i> Edit
+                    </button>
+                   
+        
+
+                    <button type="button" class="btn btn-primary no-print" id="printSummary">
+                        <i class="fa-solid fa-print"></i> Print 
+                    </button>
+
+
+                    <button type="button" class="btn btn-primary no-print" id="nextToThankYou">
+                      <i class="fa-solid fa-arrow-right"></i> Next
+                  </button>
+
+                </div>
+            </div>
+<br>
+            <!-- Signature Boxes -->
+            <div class="signature-box">
+                <div class="signature-line">
+                    <p>Student Signature</p>
+                </div>
+                <div class="signature-line">
+                    <p>Proff. A. S. Alane </p>
+                </div>
+            </div>
+        </div>
+
+    </div>    
+        <!-- Thank You Page -->
+        <div id="thankYouPage" class="thank-you-full" style="display: none;">
+          <!-- Background image -->
+          <img src="https://i.pinimg.com/736x/52/1f/90/521f90ee6a4f3c20e9cf9e6d7ef24d39.jpg" alt="Chemistry Lab Animation" class="background-lab" />
+
+
+
+          <div class="circuit-line" style="top: 10%; left: -100px;"></div>
+          <div class="circuit-line" style="top: 50%; left: -100px;"></div>
+          <div class="circuit-line" style="top: 80%; left: -100px;"></div>
+          <!-- Chemistry floating symbols -->
+          <div class="chem-symbol" style="top: 20%; left: 10%;">H<sub>2</sub>O</div>
+          <div class="chem-symbol" style="top: 40%; left: 80%;">NaCl</div>
+          <div class="chem-symbol" style="top: 70%; left: 30%;">CH<sub>4</sub></div>
+          <div class="chem-symbol" style="top: 60%; left: 60%;">O<sub>2</sub></div>
+
+          <!-- Sparkles -->
+          <div class="sparkle" style="top: 80%; left: 20%;"></div>
+          <div class="sparkle" style="top: 90%; left: 40%;"></div>
+          <div class="sparkle" style="top: 70%; left: 70%;"></div>
+          <div class="sparkle" style="top: 85%; left: 85%;"></div>
+          <div class="sparkle" style="top: 90%; left: 10%;"></div>
+          <div class="sparkle" style="top: 85%; left: 25%;"></div>
+          <div class="sparkle" style="top: 70%; left: 65%;"></div>
+          <div class="sparkle" style="top: 75%; left: 80%;"></div>
+          
+          <script>
+            for (let i = 0; i < 50; i++) {
+              const p = document.createElement("div");
+              p.className = "particle";
+              p.style.top = Math.random() * 100 + "%";
+              p.style.left = Math.random() * 100 + "%";
+              p.style.animationDelay = Math.random() * 3 + "s";
+              document.getElementById("thankYouPage").appendChild(p);
+            }
+
+
+            for (let i = 0; i < 80; i++) {
+            const star = document.createElement("div");
+            star.className = "twinkle-star";
+            star.style.top = Math.random() * 100 + "%";
+            star.style.left = Math.random() * 100 + "%";
+            star.style.animationDelay = Math.random() * 5 + "s";
+            document.getElementById("thankYouPage").appendChild(star);
+        }
+          </script>
+
+          <!-- Thank You Card -->
+          <div class="thank-you-card">
+              <h1> Thank You !</h1>
+              <p>Your evaluation has been successfully submitted.</p>
+              <p>We appreciate your time and feedback.</p>
+              
+              <!-- Submit Button on Thank You Page -->
+              <div class="button-container">
+                
+                    <button type="button" class="btn-modern" id="backToSummary">
+                        <i class="fas fa-arrow-left"></i> Previous
+                    </button>
+
+                    <button type="button" class="btn-modern" id="backToHome">
+                       <i class="fas fa-home"></i> Back to Home
+                    </button>
+
+                    <button type="button" class="btn-modern" id="finalSubmitBtn">
+                        <i class="fas fa-check"></i>  Submit evaluation
+                    </button>
+          </div>
+        
+
+
+
+          <!--------------------JAVA-SCRIPT---------------------->
+    
+  <script src="Chemistry.js">
+  </script>
+</body>
+</html>

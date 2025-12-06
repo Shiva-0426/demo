@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Proposal</title>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Playfair Display', serif;
+            background: linear-gradient(135deg, #ffd1dc, #ffb6c1);
+            color: #8b0000;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header { text-align: center; padding: 40px 20px; animation: fadeIn 2s ease; }
+
+        h1 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .intro { font-size: 1.2rem; max-width: 800px; margin: 0 auto 30px; line-height: 1.8; }
+
+        .reasons-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+            margin: 40px 0;
+        }
+
+        .reason {
+            background: rgba(255,255,255,0.8);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: transform .3s ease, box-shadow .3s ease;
+            opacity: 0;
+            animation: fadeInUp .8s ease forwards;
+        }
+
+        .reason:hover { transform: translateY(-5px); box-shadow: 0 6px 20px rgba(0,0,0,0.15); }
+
+        .reason-number { font-weight: bold; color: #ff69b4; margin-bottom: 5px; }
+
+        .proposal-section {
+            text-align: center;
+            padding: 60px 20px;
+            background: rgba(255,255,255,0.7);
+            border-radius: 20px;
+            margin: 50px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .proposal-section::before {
+            content: "";
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.8) 0%, rgba(255,255,255,0) 70%);
+            animation: pulse 4s infinite;
+            z-index: -1;
+        }
+
+        .proposal-text {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .proposal-buttons { display:flex; justify-content:center; gap:20px; margin-top:30px; }
+
+        button {
+            padding: 15px 40px;
+            font-size: 1.2rem;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all .3s ease;
+            font-family: 'Playfair Display', serif;
+            font-weight: bold;
+        }
+
+        #yes-btn {
+            background: linear-gradient(45deg,#ff69b4,#ff1493);
+            color: white;
+            box-shadow: 0 4px 15px rgba(255,105,180,.4);
+        }
+        #yes-btn:hover { transform: scale(1.05); box-shadow: 0 6px 20px rgba(255,105,180,.6); }
+
+        #no-btn { background: #f0f0f0; color: #8b0000; }
+        #no-btn:hover { background: #e0e0e0; }
+
+        .heart {
+            position: absolute;
+            font-size: 20px;
+            color: #ff69b4;
+            animation: float 5s infinite ease-in-out;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        .hidden { display: none; }
+
+        .response-message {
+            font-size: 2rem;
+            margin-top: 30px;
+            font-family: 'Dancing Script', cursive;
+            animation: bounce 1s ease;
+        }
+
+        /* Footer proposal scene styles */
+        #proposal-scene {
+            width: 100%;
+            margin-top: 40px;
+            display: none;
+            animation: fadeIn 1s ease forwards;
+            text-align: center;
+            padding: 40px 20px;
+            background: linear-gradient(180deg, rgba(255,255,255,0.6), rgba(255,255,255,0.3));
+            border-radius: 16px;
+            position: relative;
+            overflow: visible;
+        }
+
+        .scene-inner {
+            max-width: 1000px;
+            margin: 0 auto;
+            height: 260px;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: flex-end;
+            gap: 80px;
+        }
+
+        .character {
+            width: 160px;
+            height: 260px;
+            position: absolute; /* allow free movement */
+            bottom: 8px;
+            display:flex;
+            justify-content:center;
+            align-items:flex-end;
+            transform-origin: center bottom;
+        }
+
+        /* base figure */
+        .man-figure, .woman-figure {
+            width: 110px;
+            height: 220px;
+            position: relative;
+            transition: transform .6s ease;
+            display:flex;
+            justify-content:center;
+            align-items:flex-start;
+        }
+
+        /* head */
+        .man-head, .woman-head {
+            width: 46px;
+            height: 46px;
+            border-radius:50%;
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            box-shadow: 0 2px 0 rgba(0,0,0,0.05);
+        }
+
+        .man-head { background: #f1c27d; }
+        .woman-head { background: #f5d0b6; }
+
+        /* torso / dress */
+        .man-torso {
+            width: 90px;
+            height: 110px;
+            background: linear-gradient(180deg,#1e6fb6,#145a9b);
+            position: absolute;
+            top: 54px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 10px;
+        }
+        .woman-dress {
+            width: 120px;
+            height: 145px;
+            background: linear-gradient(180deg,#d92020,#9e0f0f);
+            position: absolute;
+            top: 54px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 12px 12px 60px 60px;
+            display:flex;
+            justify-content:center;
+            align-items:flex-end;
+            padding-bottom:12px;
+        }
+
+        /* legs */
+        .man-legs, .woman-legs {
+            width: 100px;
+            height: 60px;
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            display:flex;
+            gap: 10px;
+            justify-content:center;
+            align-items:flex-end;
+        }
+        .leg {
+            width: 36%;
+            height: 100%;
+            background: #0b3a60;
+            border-radius: 6px;
+            transform-origin: top center;
+        }
+        .w-leg {
+            background: #3b1b1b;
+        }
+
+        /* bouquet */
+        .bouquet {
+            position: absolute;
+            right: -24px;
+            top: 120px;
+            transform-origin: center;
+            opacity: 0;
+            transition: opacity .6s ease, transform .6s ease;
+        }
+        .bouquet .stem { width: 8px; height: 36px; background: #2f7d2f; border-radius:6px; display:block; margin: 0 auto; }
+        .bouquet .flowers { display:block; margin-top:-6px; text-align:center; font-size:18px; filter:drop-shadow(0 1px 0 rgba(0,0,0,0.1)); }
+
+        /* walking keyframes: move characters from offscreen to center positions */
+        @keyframes walkLeftToCenter {
+            0% { transform: translateX(-130vw) translateY(0); }
+            70% { transform: translateX(-8vw) translateY(0); } /* slight overshoot */
+            100% { transform: translateX(0) translateY(0); }
+        }
+        @keyframes walkRightToCenter {
+            0% { transform: translateX(130vw) translateY(0); }
+            70% { transform: translateX(8vw) translateY(0); }
+            100% { transform: translateX(0) translateY(0); }
+        }
+
+        /* small body bob while walking */
+        @keyframes bodyBob {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(-6px); }
+            100% { transform: translateY(0); }
+        }
+
+        /* leg stepping */
+        @keyframes legStep {
+            0% { transform: rotate(8deg) translateY(0); }
+            50% { transform: rotate(-18deg) translateY(6px); }
+            100% { transform: rotate(8deg) translateY(0); }
+        }
+
+        /* walking state classes */
+        .walk-left {
+            animation: walkLeftToCenter 3s cubic-bezier(.22,.9,.13,.99) forwards;
+        }
+        .walk-right {
+            animation: walkRightToCenter 3s cubic-bezier(.22,.9,.13,.99) forwards;
+        }
+        .walking .man-torso, .walking .woman-dress {
+            animation: bodyBob 0.6s ease-in-out infinite;
+        }
+        .walking .leg {
+            animation: legStep 0.5s linear infinite;
+        }
+        .walking .leg:nth-child(2) { animation-delay: 0.25s; }
+
+        /* kneel transform (applied when active) */
+        .man-figure.kneel { transform: translateY(20px) rotate(-12deg) scale(0.98); }
+        .woman-figure.step-forward { transform: translateY(0) translateX(-6px) scale(1.02); }
+        .bouquet.show { opacity: 1; transform: translateY(-6px) rotate(-6deg); }
+
+        /* small decorative confetti layer */
+        .scene-decor { position:absolute; left:0; right:0; top:-10px; pointer-events:none; z-index:2; }
+
+        @keyframes fadeIn { from { opacity:0 } to { opacity:1 } }
+        @keyframes fadeInUp { from { opacity:0; transform: translateY(20px); } to { opacity:1; transform: translateY(0);} }
+        @keyframes pulse { 0% { transform: scale(.8); opacity:.8 } 50% { transform: scale(1.2); opacity:.4 } 100% { transform: scale(.8); opacity:.8 } }
+        @keyframes float { 0% { transform: translateY(0) rotate(0deg); } 50% { transform: translateY(-20px) rotate(180deg); } 100% { transform: translateY(0) rotate(360deg); } }
+        @keyframes bounce { 0%,20%,50%,80%,100% { transform: translateY(0);} 40% { transform: translateY(-20px);} 60% { transform: translateY(-10px);} }
+
+        footer { text-align:center; padding:20px; font-style:italic; margin-top:40px; }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            h1 { font-size: 2.5rem; }
+            .proposal-text { font-size: 2rem; }
+            .reasons-container { grid-template-columns: 1fr; }
+            .proposal-buttons { flex-direction: column; align-items: center; }
+            button { width: 80%; }
+            .scene-inner { gap: 30px; height: 220px; }
+            .character { width: 120px; height: 220px; }
+            .man-torso, .woman-dress { width: 90px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>💍 My Love, I Want to Tell You Something… 💗</h1>
+            <p class="intro">
+                I've been carrying these feelings in my heart for a long time, and today I want to share them with you…
+                There are so many reasons why you mean so much to me — a hundred reasons, to be exact.
+            </p>
+        </header>
+
+        <section>
+            <h2 style="text-align:center; margin-bottom:20px;">Here are 100 reasons why I love you:</h2>
+            <div class="reasons-container" id="reasons-list"></div>
+        </section>
+
+        <section class="proposal-section">
+            <p class="proposal-text">
+                And today… I want to ask you something…<br><br>
+                Will you be mine? Will you be my forever? 💖
+            </p>
+
+            <div class="proposal-buttons">
+                <button id="yes-btn">Yes, Forever! 💍</button>
+                <button id="no-btn">Maybe Later</button>
+            </div>
+
+            <div id="response" class="hidden response-message"></div>
+        </section>
+
+        
+
+               
+
+        <footer><p>With all my love, forever and always.</p></footer>
+    </div>
+
+    <script>
+        // Reasons array (same as before)
+        const reasons = [
+            "Your smile makes my world brighter.",
+            "The way your eyes speak when words fail.",
+            "Your voice feels like home.",
+            "You understand my silence.",
+            "You make even the ordinary feel special.",
+            "The warmth of your hug is my safe place.",
+            "Your laughter is my favorite melody.",
+            "You never judge me, even at my worst.",
+            "You complete my incomplete thoughts.",
+            "You love me in ways I never knew I needed.",
+            "Your presence turns my bad days good.",
+            "The way you hold my hand makes me feel secure.",
+            "You remember the little things about me.",
+            "You know my fears yet never make me feel weak.",
+            "Your love feels effortless, yet so deep.",
+            "The way you listen, even when I ramble.",
+            "Your heart is as beautiful as your face.",
+            "You bring out the best in me.",
+            "Your patience with me, even when I'm difficult.",
+            "The way you wipe away my tears.",
+            "You never let me feel alone.",
+            "Your love makes me believe in forever.",
+            "You make me feel important without trying.",
+            "Your kindness makes the world better.",
+            "The way you say my name sounds different.",
+            "You are my peace in this chaotic world.",
+            "The way you trust me without conditions.",
+            "You see beauty in my flaws.",
+            "You remind me to love myself too.",
+            "The way you laugh at my stupid jokes.",
+            "You bring meaning to my existence.",
+            "You make love feel like poetry.",
+            "The way you support my dreams.",
+            "Your heartbeat is my favorite sound.",
+            "You make me believe in magic.",
+            "The way you look at me with love.",
+            "You love me even when I'm unlovable.",
+            "The way you remember our special moments.",
+            "You feel like my missing piece.",
+            "Your touch calms my storms.",
+            "You never give up on me.",
+            "You make the nights feel less lonely.",
+            "You inspire me to be a better person.",
+            "Your love is my greatest strength.",
+            "You don't need words to make me feel loved.",
+            "You make my dreams sweeter.",
+            "Every song reminds me of you.",
+            "Your love is my safe haven.",
+            "You make even silence feel comforting.",
+            "You never let me fight my battles alone.",
+            "Your presence is the best gift.",
+            "You never let me feel invisible.",
+            "You bring color to my dull days.",
+            "Your love is my greatest adventure.",
+            "You know my unspoken words.",
+            "You love me, not just my happiness.",
+            "You never make me feel less.",
+            "Your love makes life worth it.",
+            "You make distance feel smaller.",
+            "Your love is louder than any fear.",
+            "You are my constant in an uncertain world.",
+            "You believe in me when I don't.",
+            "Your love makes my heart race.",
+            "You make pain feel temporary.",
+            "You hold my heart gently.",
+            "You see my scars and love me more.",
+            "Your love is a forever kind of thing.",
+            "You love me on my worst days.",
+            "The way you fit perfectly in my arms.",
+            "You never make love feel heavy.",
+            "You turn ordinary moments into magic.",
+            "You make even the stars jealous.",
+            "You bring warmth to my cold heart.",
+            "Your love feels like a soft whisper.",
+            "You are my reason to believe in love.",
+            "The way your love never fades.",
+            "You are my always and forever.",
+            "Your love is my favorite feeling.",
+            "The way your presence feels like home.",
+            "You make even my demons quiet.",
+            "Your love is my favorite memory.",
+            "The way you make every goodbye hard.",
+            "You make life a little more beautiful.",
+            "You bring hope to my darkest days.",
+            "Your love is my greatest treasure.",
+            "The way you make me feel alive.",
+            "You make forever feel too short.",
+            "Your love is my sweetest addiction.",
+            "You never let me feel replaceable.",
+            "You make every heartbeat count.",
+            "Your love is my strongest prayer.",
+            "You make me believe in soulmates.",
+            "The way you make me crave more of you.",
+            "You are my heart's favorite place.",
+            "You make love feel effortless.",
+            "You never let go, even when I push away.",
+            "Your love is my quiet miracle.",
+            "You make every second with you precious.",
+            "You are the love story I always wanted.",
+            "I love you because you are you."
+        ];
+
+        // Populate reasons with staggered animation
+        function populateReasons() {
+            const container = document.getElementById('reasons-list');
+            reasons.forEach((reason, index) => {
+                const reasonElement = document.createElement('div');
+                reasonElement.className = 'reason';
+                reasonElement.innerHTML = `
+                    <div class="reason-number">${index + 1}.</div>
+                    <div class="reason-text">${reason}</div>
+                `;
+                reasonElement.style.animationDelay = (index * 0.05) + 's';
+                container.appendChild(reasonElement);
+            });
+        }
+
+        // Create floating hearts background
+        function createHearts() {
+            const heartContainer = document.body;
+            for (let i = 0; i < 20; i++) {
+                const heart = document.createElement('div');
+                heart.className = 'heart';
+                heart.innerHTML = '💖';
+                heart.style.left = Math.random() * 100 + 'vw';
+                heart.style.top = Math.random() * 100 + 'vh';
+                heart.style.animationDelay = Math.random() * 5 + 's';
+                heartContainer.appendChild(heart);
+            }
+        }
+
+        // Create small decorative confetti inside the scene header
+        function createSceneConfetti(container) {
+            container.innerHTML = '';
+            for (let i = 0; i < 12; i++) {
+                const span = document.createElement('span');
+                span.innerText = '💫';
+                span.style.position = 'absolute';
+                span.style.left = Math.random() * 100 + '%';
+                span.style.top = Math.random() * 30 + '%';
+                span.style.fontSize = (10 + Math.random() * 18) + 'px';
+                span.style.opacity = 0.95;
+                span.style.transform = `translateY(-10px) rotate(${Math.random() * 360}deg)`;
+                span.style.transition = `transform ${(1 + Math.random() * 2).toFixed(2)}s ease, opacity 1.8s ease`;
+                container.appendChild(span);
+
+                setTimeout(() => {
+                    span.style.transform = `translateY(4px) rotate(${(Math.random() * 360).toFixed(0)}deg)`;
+                    span.style.opacity = '0';
+                }, 300 + Math.random() * 1200);
+
+                setTimeout(() => { span.remove(); }, 2500);
+            }
+        }
+
+        function setupProposalButtons() {
+            const yesBtn = document.getElementById('yes-btn');
+            const noBtn = document.getElementById('no-btn');
+            const responseDiv = document.getElementById('response');
+            const proposalScene = document.getElementById('proposal-scene');
+            const manChar = document.getElementById('manChar');
+            const womanChar = document.getElementById('womanChar');
+            const manFigure = document.getElementById('manFigure');
+            const womanFigure = document.getElementById('womanFigure');
+            const bouquet = document.getElementById('bouquet');
+            const sceneDecor = document.getElementById('scene-decor');
+
+            yesBtn.addEventListener('click', function() {
+                responseDiv.innerHTML = "You've made me the happiest person in the world! I love you! 💍💖";
+                responseDiv.classList.remove('hidden');
+
+                // Show scene
+                proposalScene.style.display = "block";
+                proposalScene.setAttribute('aria-hidden', 'false');
+
+                // Reset any previous state
+                manFigure.classList.remove('kneel', 'walking', 'walk-left');
+                womanFigure.classList.remove('step-forward', 'walking', 'walk-right');
+                bouquet.classList.remove('show');
+
+                // Position characters offscreen (left and right)
+                manChar.style.left = '-140px'; // will be animated by CSS keyframes on the figure
+                womanChar.style.right = '-140px';
+
+                // Add walking classes (this will animate them into center)
+                // We apply walk classes to the figures themselves to use transform animations
+                setTimeout(() => {
+                    manFigure.classList.add('walk-left', 'walking');
+                    womanFigure.classList.add('walk-right', 'walking');
+
+                    // also animate the container positions so things look centered (makes overlap safer)
+                    manChar.style.left = '32%';
+                    womanChar.style.right = '32%';
+                }, 60);
+
+                // After walking duration (3s), stop walking, then kneel and show bouquet
+                setTimeout(() => {
+                    // stop walking animations
+                    manFigure.classList.remove('walking', 'walk-left');
+                    womanFigure.classList.remove('walking', 'walk-right');
+
+                    // add kneel & step-forward
+                    manFigure.classList.add('kneel');
+                    womanFigure.classList.add('step-forward');
+
+                    // show bouquet
+                    bouquet.classList.add('show');
+
+                    // small confetti/hearts from bottom
+                    for (let i = 0; i < 45; i++) {
+                        setTimeout(() => {
+                            const heart = document.createElement('div');
+                            heart.className = 'heart';
+                            heart.innerHTML = '💖';
+                            heart.style.left = (42 + Math.random() * 16) + 'vw';
+                            heart.style.top = '100vh';
+                            heart.style.fontSize = (12 + Math.random() * 24) + 'px';
+                            heart.style.transition = 'transform 2.6s cubic-bezier(.2,.8,.2,1), opacity 1.2s ease';
+                            document.body.appendChild(heart);
+
+                            requestAnimationFrame(() => {
+                                heart.style.transform = `translateY(-110vh) translateX(${(Math.random() - 0.5) * 40}vw) rotate(${Math.random() * 720}deg)`;
+                                heart.style.opacity = '0';
+                            });
+
+                            setTimeout(() => { heart.remove(); }, 3200);
+                        }, i * 70);
+                    }
+
+                    // small decorative confetti in scene header
+                    createSceneConfetti(sceneDecor);
+                }, 3200); // 3s walk + small buffer
+            });
+
+            // playful no button movement
+            noBtn.addEventListener('click', function() {
+                const maxX = window.innerWidth - noBtn.offsetWidth;
+                const maxY = window.innerHeight - noBtn.offsetHeight;
+                const randomX = Math.floor(Math.random() * maxX);
+                const randomY = Math.floor(Math.random() * maxY);
+                noBtn.style.position = 'fixed';
+                noBtn.style.left = randomX + 'px';
+                noBtn.style.top = randomY + 'px';
+                let clickCount = parseInt(noBtn.getAttribute('data-clicks') || '0');
+                clickCount++;
+                noBtn.setAttribute('data-clicks', clickCount.toString());
+                if (clickCount >= 3) noBtn.textContent = "Okay, maybe think about it?";
+                if (clickCount >= 5) noBtn.textContent = "Pretty please?";
+                if (clickCount >= 7) noBtn.textContent = "I'm not giving up!";
+                if (clickCount >= 10) noBtn.textContent = "Okay, I'll wait forever!";
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            createHearts();
+            populateReasons();
+            setupProposalButtons();
+        });
+    </script>
+</body>
+</html>
